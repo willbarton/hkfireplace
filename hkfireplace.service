@@ -1,0 +1,11 @@
+[Unit]
+Description = HomeKit NeoPixel Fireplace
+Wants = pigpiod.service network-online.target
+After = local-fs.target network-online.target pigpiod.service
+
+[Service]
+User = root
+ExecStart = /usr/local/bin/hkfireplace -s /home/pi/hkfireplace.state -p 18 -x 120
+
+[Install]
+WantedBy = multi-user.target
